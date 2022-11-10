@@ -27,7 +27,7 @@ Civilizacion *Civilizacion_init(char *nombre){
 
 Civilizacion *Civilizacion_free(Civilizacion *civilizacion){
     if (civilizacion == NULL){
-        puts("Error civilizacion sin memoria");
+        puts("Error civilización sin memoria");
         return civilizacion;
     }
     free(civilizacion->nombre);
@@ -35,6 +35,31 @@ Civilizacion *Civilizacion_free(Civilizacion *civilizacion){
     free(civilizacion);
     civilizacion = NULL;
     return civilizacion;
+}
+
+Civilizacion *Civilizacion_capturar(){
+    char *nombre = leerCadena("Nombre civilización: ");
+
+    Civilizacion *civilizacion = Civilizacion_init(nombre);
+
+    return civilizacion;
+}
+
+bool Civilizacion_mostrar(Civilizacion *civilizacion)
+{
+    if(civilizacion == NULL){
+        puts("Civilización no tiene memoria");
+        return false;
+    }
+    printf("Nombre de la civilización: %s\n",civilizacion->nombre);
+    if(AldeanosLista_mostrar_tabla(civilizacion->aldeanosLista)){
+        puts("Se mostró AldeanosLista");
+    }else
+    {
+        puts("error al mostrar Aldeanos");
+        return false;
+    }
+    return true;
 }
 
 

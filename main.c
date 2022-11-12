@@ -6,8 +6,6 @@ int main(){
 
     Civilizaciones *civilizaciones = Civilizaciones_init();
     menu_civilizaciones(civilizaciones);
-
-    civilizaciones = ListaLigadaDoble_free(civilizaciones);
-
+    civilizaciones = Civilizaciones_free(civilizaciones);
     return EXIT_SUCCESS;
 }

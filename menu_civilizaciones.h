@@ -29,7 +29,7 @@ void menu_civilizaciones(Civilizaciones *civilizaciones)
         puts("6. Buscar civilizacion");
         puts("0. Salir");
         scanf("%i",&op);
-        fflush(stdin);
+        while(getchar() != '\n');
 
         switch(op)
         {
@@ -56,7 +56,11 @@ void menu_civilizaciones(Civilizaciones *civilizaciones)
         case MOSTRAR:
             if(Civilizaciones_mostrar(civilizaciones)){
                 puts("Se mostró Civilizaciones");
-            }else puts("Error al mostrat Civilizaciones");
+                puts("");
+            }else{
+                puts("Error al mostrat Civilizaciones");
+                puts("");
+            }
             break;
         case ELIMINAR_INICIO:
             if(Civilizaciones_eliminar_inicio(civilizaciones)){

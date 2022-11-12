@@ -19,7 +19,7 @@ NodoDoble *NodoDoble_init(Civilizacion *dato)
     NodoDoble *nodo_doble = (NodoDoble*)malloc(sizeof(NodoDoble));
 
     if(nodo_doble == NULL){
-        puts("Nodo: no se pudo reservar memoria");
+        puts("No se pudo reservar memoria para Nodo");
         return NULL;
     }
 
@@ -43,7 +43,7 @@ ListaLigadaDoble *ListaLigadaDoble_init()
     ListaLigadaDoble *listaLigadaDoble = (ListaLigadaDoble*)malloc(sizeof(ListaLigadaDoble));
 
     if (listaLigadaDoble == NULL){
-        puts("Lista ligada: no se reservo memoria");
+        puts("No se reservó memoria para ListaLigadaDoble");
         return NULL;
     }
 
@@ -57,7 +57,7 @@ ListaLigadaDoble *ListaLigadaDoble_init()
 bool ListaLigadaDoble_vacia(ListaLigadaDoble *listaLigadaDoble)
 {
     if(listaLigadaDoble == NULL){
-        puts("lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         exit(1);
     }
     return listaLigadaDoble->cantidad == 0;
@@ -66,13 +66,13 @@ bool ListaLigadaDoble_vacia(ListaLigadaDoble *listaLigadaDoble)
 bool ListaLigadaDoble_insertar_inicio(ListaLigadaDoble *listaLigadaDoble,Civilizacion *dato)
 {
     if (listaLigadaDoble == NULL){
-        puts("Lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         return false;
     }
 
     NodoDoble *nuevo = NodoDoble_init(dato);
     if (nuevo == NULL){
-        puts("Lista ligada: no se pudo crear un nuevo nodo");
+        puts("ListaLigada no puedo crear un nuevo Nodo");
         return false;
     }
     if(ListaLigadaDoble_vacia(listaLigadaDoble)){
@@ -92,13 +92,13 @@ bool ListaLigadaDoble_insertar_inicio(ListaLigadaDoble *listaLigadaDoble,Civiliz
 bool ListaLigadaDoble_insertar_final(ListaLigadaDoble *listaLigadaDoble,Civilizacion *dato)
 {
     if (listaLigadaDoble == NULL){
-        puts("Lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         return false;
     }
 
     NodoDoble *nuevo = NodoDoble_init(dato);
     if (nuevo == NULL){
-        puts("Lista ligada: no se pudo crear un nuevo nodo");
+        puts("ListaLigada no puedo crear un nuevo Nodo");
         return false;
     }
     if(ListaLigadaDoble_vacia(listaLigadaDoble)){
@@ -118,7 +118,7 @@ bool ListaLigadaDoble_insertar_final(ListaLigadaDoble *listaLigadaDoble,Civiliza
 bool ListaLigadaDoble_mostrar(ListaLigadaDoble *listaLigadaDoble)
 {
     if(listaLigadaDoble == NULL){
-        puts("Lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         return false;
     }
 
@@ -127,8 +127,9 @@ bool ListaLigadaDoble_mostrar(ListaLigadaDoble *listaLigadaDoble)
 
     while(temp != NULL){
         if(Civilizacion_mostrar(temp->dato)){
-            puts("Civilizaciones: se mostro civilizacion");
-        }else puts("Civilizaciones: error al mostrar civilizacion");
+            puts("Se mostró Civilizaciones");
+            puts("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.");
+        }else puts("Error al mostrar Civilizacion");
         temp = temp->siguiente;
     }
 
@@ -138,12 +139,12 @@ bool ListaLigadaDoble_mostrar(ListaLigadaDoble *listaLigadaDoble)
 bool ListaLigadaDoble_eliminar_inicio(ListaLigadaDoble *listaLigadaDoble)
 {
     if(listaLigadaDoble == NULL){
-        puts("lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         return false;
     }
 
     if(ListaLigadaDoble_vacia(listaLigadaDoble)){
-        puts("Lista ligada: vacia");
+        puts("ListaLigada esta vacia");
         return false;
     }
 
@@ -166,12 +167,12 @@ bool ListaLigadaDoble_eliminar_inicio(ListaLigadaDoble *listaLigadaDoble)
 bool ListaLigadaDoble_eliminar_final(ListaLigadaDoble *listaLigadaDoble)
 {
     if(listaLigadaDoble == NULL){
-        puts("lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         return false;
     }
 
     if(ListaLigadaDoble_vacia(listaLigadaDoble)){
-        puts("Lista ligada: vacia");
+        puts("ListaLigada esta vacia");
         return false;
     }
 
@@ -194,7 +195,7 @@ bool ListaLigadaDoble_eliminar_final(ListaLigadaDoble *listaLigadaDoble)
 ListaLigadaDoble *ListaLigadaDoble_free(ListaLigadaDoble *listaLigadaDoble)
 {
     if(listaLigadaDoble == NULL){
-        puts("Lista ligada: no tiene memoria");
+        puts("ListaLigada no tiene memoria");
         return NULL;
     }
 
@@ -218,7 +219,7 @@ typedef ListaLigadaDoble Civilizaciones;
 Civilizacion *Civilizaciones_buscar(Civilizaciones *civilizaciones,char *nombre)
 {
     if(civilizaciones == NULL){
-        puts("Civilizaciones: no tiene memoria");
+        puts("Civilizaciones no tiene memoria");
         return NULL;
     }
     NodoDoble *temp = civilizaciones->inicio;

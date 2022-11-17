@@ -14,8 +14,7 @@ struct nodo_doble
 };
 typedef struct nodo_doble NodoDoble;
 
-NodoDoble *NodoDoble_init(Civilizacion *dato)
-{
+NodoDoble *NodoDoble_init(Civilizacion *dato){
     NodoDoble *nodo_doble = (NodoDoble*)malloc(sizeof(NodoDoble));
 
     if(nodo_doble == NULL){
@@ -29,9 +28,7 @@ NodoDoble *NodoDoble_init(Civilizacion *dato)
 
     return nodo_doble;
 }
-
-struct listaligadadoble
-{
+struct listaligadadoble{
     NodoDoble *inicio;
     NodoDoble *final;
     size_t cantidad;
@@ -216,6 +213,7 @@ typedef ListaLigadaDoble Civilizaciones;
 #define Civilizaciones_eliminar_inicio ListaLigadaDoble_eliminar_inicio
 #define Civilizaciones_eliminar_final ListaLigadaDoble_eliminar_final
 
+
 Civilizacion *Civilizaciones_buscar(Civilizaciones *civilizaciones,char *nombre)
 {
     if(civilizaciones == NULL){
@@ -233,6 +231,5 @@ Civilizacion *Civilizaciones_buscar(Civilizaciones *civilizaciones,char *nombre)
     return NULL;
 
 }
-
 
 #endif

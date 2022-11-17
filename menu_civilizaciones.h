@@ -79,9 +79,8 @@ void menu_civilizaciones(Civilizaciones *civilizaciones)
                 printf("No se encontró la civilización: %s\n",nombre);
                 continue;
             }
-            menu_aldeanos(civilizacion->aldeanosLista);
+            menu_aldeanos(civilizacion->aldeanosLista, civilizacion->puerto);
             break;
-
         default:
             break;
 

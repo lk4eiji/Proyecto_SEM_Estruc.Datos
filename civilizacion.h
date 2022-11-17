@@ -4,11 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "aldeanos_lista.h"
+#include "puerto.h"
 
 struct civilizacion
 {
     char *nombre;
     AldeanosLista *aldeanosLista;
+    Puerto *puerto;
 };
 typedef struct civilizacion Civilizacion;
 
@@ -21,6 +23,7 @@ Civilizacion *Civilizacion_init(char *nombre){
     }
     civilizacion->nombre = strdup(nombre);
     civilizacion->aldeanosLista = aldeanosLista_init();
+    civilizacion->puerto = Puerto_init();
 
     return civilizacion;
 }
@@ -32,6 +35,7 @@ Civilizacion *Civilizacion_free(Civilizacion *civilizacion){
     }
     free(civilizacion->nombre);
     civilizacion->aldeanosLista =AldeanosLista_free(civilizacion->aldeanosLista);
+    civilizacion->puerto = Puerto_free(civilizacion->puerto);
     free(civilizacion);
     civilizacion = NULL;
     return civilizacion;

@@ -30,4 +30,11 @@ int leerSize_t(char *mensaje){
     return st;
 }
 
+float leerFloat(char *mensaje){
+    float flotante;
+    printf("%s", mensaje);
+    scanf("%f", &flotante);
+    return flotante;
+}
+
 #endif

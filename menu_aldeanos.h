@@ -3,19 +3,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "aldeanos_lista.h"
+#include "menu_puerto.h"
 
 typedef enum{
     SALIR,
     AGREGAR_INICIO, AGREGAR_FINAL, INSERTAR,
     MOSTRAR, MOSTRAR_TABLA,
-    ELIMINAR_INICIO, ELIMINAR_FINAL, ELIMINAR
+    ELIMINAR_INICIO, ELIMINAR_FINAL, ELIMINAR,
+    PUERTO
 }MENU_ALDEANOS;
 
-void menu_aldeanos(AldeanosLista *aldeanosLista ){
+void menu_aldeanos(AldeanosLista *aldeanosLista, Puerto *puerto){
     int opc;
     Aldeano *aldeano;
     size_t posicion;
-
     do
     {
         puts("1. Agregar Inicio");
@@ -26,6 +27,7 @@ void menu_aldeanos(AldeanosLista *aldeanosLista ){
         puts("6. Eliminar Inicio");
         puts("7. Eliminar Final");
         puts("8. Eliminar");
+        puts("9. Puerto");
         puts("0. Salir");
         scanf("%i",&opc);
         while(getchar() != '\n');
@@ -91,6 +93,9 @@ void menu_aldeanos(AldeanosLista *aldeanosLista ){
             if (AldeanosLista_eliminar(aldeanosLista, posicion)){
                 puts("Se eliminó Aldeano");
             }else puts("Error al eliminar Aldeano");
+            break;
+        case PUERTO:
+            menu_puerto(puerto);
             break;
         case SALIR:
             puts("Saliendo...");

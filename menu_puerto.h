@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "puerto.h"
+#include "menu_guerreros.h"
 
 typedef enum{
     SALIR_PUERTO,
@@ -50,7 +51,7 @@ void menu_puerto(Puerto *puerto){
                 printf("No se encontró el barco con ID: %zu\n",id);
                 continue;
             }
-            //menu_guerreros(/*Llenar*/);
+            menu_guerreros(barco->guerreros);
             break;
         case SALIR_PUERTO:
             puts("Saliendo...");

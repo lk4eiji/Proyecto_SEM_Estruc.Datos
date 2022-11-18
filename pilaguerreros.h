@@ -84,6 +84,7 @@ bool Pila_mostrar(Pila *pila){
         printf("[Id Guerrero: %zu]->", temp->dato->id);
         temp = temp->siguiente;
     }
+    puts("NULL");
     printf("cantidad de Guerreros: %zu\n",pila->cantidad);
     puts("");
     return true;

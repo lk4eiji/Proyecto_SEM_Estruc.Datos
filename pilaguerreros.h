@@ -126,7 +126,7 @@ Pila *Pila_free(Pila *pila){
     return pila;
 }
 
-bool *Pila_tope(Pila *pila){
+bool Pila_tope(Pila *pila){
     if (pila == NULL){
         puts("Pila no tiene memoria");
         return false;

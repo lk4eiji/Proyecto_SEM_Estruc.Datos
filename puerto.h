@@ -122,10 +122,10 @@ bool ListaLigada_Doble_mostrar(ListaLigada_Doble *listaLigada_Doble)
     Nodo_Doble *temp = listaLigada_Doble->inicio;
 
     while(temp != NULL){
-        if(Barco_mostrar(temp->dato)){
-            puts("Se mostró Barco");
-            puts("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.");
-        }else puts("Error al mostrar Barco");
+        printf("%-4s %12s %10s %8s\n","Id", "Combustibe", "Velocidad", "Armadura");
+        if(!Barco_mostrar(temp->dato)){
+            puts("Error al mostrar Barco");
+        }
         temp = temp->siguiente;
     }
     printf("cantidad de barcos: %zu\n",listaLigada_Doble->cantidad);

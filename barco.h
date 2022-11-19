@@ -46,11 +46,9 @@ bool Barco_mostrar(Barco *barco){
         puts("Barco no tiene memoria");
         return false;
     }
-    printf("Id del Barco: %zu\n", barco->id);
-    printf("Combustible: %.2f\n", barco->combustible);
-    printf("Velocidad: %.2f\n", barco->velocidad);
-    printf("Armadura: %.2f\n", barco->armadura);
+    printf("%-4zu %12.2f %10.2f %8.2f \n",barco->id,barco->combustible,barco->velocidad,barco->armadura); 
     puts("");
+    puts("Guerreros: ");
     if(Pila_mostrar(barco->guerreros)){
         puts("Se mostró Guerreros");
     }else

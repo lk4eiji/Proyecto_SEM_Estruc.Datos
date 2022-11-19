@@ -53,8 +53,10 @@ bool Guerrero_mostrar(Guerrero *guerrero){
 
 Guerrero *Guerrero_capturar(){
     size_t id = leerSize_t("Id del guerrero: "); 
-    int salud = leerInt("Salud: ");
-    float fuerza = leerFloat("Fuerza: "), escudo = leerFloat("Escudo: ");
+    int salud = leerInt("Salud (0-100): ");
+    float fuerza = leerFloat("Fuerza (0.0 - 60.0): "), escudo = leerFloat("Escudo (0.0 - 30.0): ");
+    while(getchar() != '\n');
+    puts("Tipos a elegir: (Lancero, Arquero, Paladín, Granadero)");
     char *tipo = leerCadena("Tipo: ");
 
     Guerrero *guerrero = Guerrero_init(id, salud, fuerza, escudo, tipo);

@@ -41,13 +41,13 @@ void menu_guerreros(PilaGuerreros *guerreros){
             }else puts("Error desapilar guerrero");
             break;
         case MOSTRAR_ULTIMO:
-            dato = PilaGuerreros_tope(guerreros);
-            if (dato == NULL)
-            {
-                puts("No hay guerreros");
-                continue;
+            if(PilaGuerreros_tope(guerreros)){
+                puts("Se mostró ultimó guerrero");
+                puts("");
+            }else{
+                puts("Error al mostrar ultimo guerrero");
+                puts("");
             }
-            printf("[Id Guerrero: %zu]\n",*dato);
             break;
         case MOSTRAR_GUERREROS:
             if(PilaGuerreros_mostrar(guerreros)){

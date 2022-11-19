@@ -63,9 +63,9 @@ bool Barco_mostrar(Barco *barco){
 
 Barco *Barco_capturar(){
     size_t id = leerSize_t("Id del Barco: "); 
-    float combustible = leerFloat("Combustible: "),
-          velocidad = leerFloat("Velocidad: "),
-          armadura = leerFloat("Armadura: ");
+    float combustible = leerFloat("Combustible (0.0 - 100.0): "),
+          velocidad = leerFloat("Velocidad (0.0 - 14.0): "),
+          armadura = leerFloat("Armadura (0.0 - 100.0): ");
     Barco *barco = Barco_init(id,combustible,velocidad,armadura);
     
     return barco;

@@ -81,10 +81,13 @@ bool Pila_mostrar(Pila *pila){
     Nodo *temp = pila->raiz;
 
     while(temp != NULL){
-        printf("[Id Guerrero: %zu]->", temp->dato->id);
+        printf("Id Guerrero: %zu\n", temp->dato->id);
+        printf("Salud: %i\n", temp->dato->salud);
+        printf("Fuerza: %.2f\n", temp->dato->fuerza);
+        printf("Escudo: %.2f\n", temp->dato->escudo);
+        printf("Tipo: %s\n", temp->dato->tipo);
         temp = temp->siguiente;
     }
-    puts("NULL");
     printf("cantidad de Guerreros: %zu\n",pila->cantidad);
     puts("");
     return true;
@@ -123,18 +126,23 @@ Pila *Pila_free(Pila *pila){
     return pila;
 }
 
-size_t *Pila_tope(Pila *pila){
+bool *Pila_tope(Pila *pila){
     if (pila == NULL){
         puts("Pila no tiene memoria");
-        return NULL;
+        return false;
     }
 
     if (Pila_vacia(pila)){
         puts("Pila está vacía");
-        return NULL;
+        return false;
     }
     
-    return &(pila->raiz->dato->id);
+    printf("Id Guerrero: %zu\n", pila->raiz->dato->id);
+    printf("Salud: %i\n", pila->raiz->dato->salud);
+    printf("Fuerza: %.2f\n", pila->raiz->dato->fuerza);
+    printf("Escudo: %.2f\n", pila->raiz->dato->escudo);
+    printf("Tipo: %s\n", pila->raiz->dato->tipo);
+    return true;
 }
 
 typedef Pila PilaGuerreros;

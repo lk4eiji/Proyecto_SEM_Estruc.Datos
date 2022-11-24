@@ -122,10 +122,12 @@ bool ListaLigada_Doble_mostrar(ListaLigada_Doble *listaLigada_Doble)
     Nodo_Doble *temp = listaLigada_Doble->inicio;
 
     while(temp != NULL){
-        printf("%-4s %12s %10s %8s\n","Id", "Combustibe", "Velocidad", "Armadura");
+        printf("%-4s %12s %10s %8s\n","Id", "Combustible", "Velocidad", "Armadura");
         if(!Barco_mostrar(temp->dato)){
             puts("Error al mostrar Barco");
         }
+        puts("Se mostró Barco");
+        puts("-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.");
         temp = temp->siguiente;
     }
     printf("cantidad de barcos: %zu\n",listaLigada_Doble->cantidad);
@@ -154,9 +156,6 @@ bool ListaLigada_Doble_eliminar_inicio(ListaLigada_Doble *listaLigada_Doble)
 
     listaLigada_Doble->inicio = temp->siguiente;
     listaLigada_Doble->cantidad--;
-    Barco_free(temp->dato);
-    free(temp);
-    temp = NULL;
     return true;
 }
 
@@ -182,9 +181,6 @@ bool ListaLigada_Doble_eliminar_final(ListaLigada_Doble *listaLigada_Doble)
 
     listaLigada_Doble->final = temp->anterior;
     listaLigada_Doble->cantidad--;
-    Barco_free(temp->dato);
-    free(temp);
-    temp = NULL;
     return true;
 }
 

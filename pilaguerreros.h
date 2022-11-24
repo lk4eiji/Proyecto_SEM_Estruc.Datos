@@ -106,6 +106,7 @@ bool Pila_desapilar(Pila *pila){
 
     Nodo *temp = pila->raiz;
     pila->raiz = temp->siguiente;
+    temp->dato = Guerrero_free(temp->dato);
     free(temp);
     temp = NULL;
     pila->cantidad--;

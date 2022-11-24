@@ -13,7 +13,7 @@ typedef enum{
     PUERTO
 }MENU_ALDEANOS;
 
-void menu_aldeanos(AldeanosLista *aldeanosLista, Puerto *puerto){
+void menu_aldeanos(AldeanosLista *aldeanosLista, Puerto *puerto, Batalla *batalla){
     int opc;
     Aldeano *aldeano;
     size_t posicion;
@@ -95,7 +95,7 @@ void menu_aldeanos(AldeanosLista *aldeanosLista, Puerto *puerto){
             }else puts("Error al eliminar Aldeano");
             break;
         case PUERTO:
-            menu_puerto(puerto);
+            menu_puerto(puerto,batalla);
             break;
         case SALIR:
             puts("Saliendo...");

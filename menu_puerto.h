@@ -4,14 +4,15 @@
 #include <stdlib.h>
 #include "puerto.h"
 #include "menu_guerreros.h"
+#include "menu_batalla.h"
 
 typedef enum{
     SALIR_PUERTO,
     AGREGAR_BARCO, MOSTRAR_BARCOS,
-    BUSCAR_BARCO
+    BUSCAR_BARCO,BATALLA
 }MENU_PUERTO;
 
-void menu_puerto(Puerto *puerto){
+void menu_puerto(Puerto *puerto, Batalla *batalla){
     int opc;
     size_t id;
     Barco *barco;
@@ -20,6 +21,7 @@ void menu_puerto(Puerto *puerto){
         puts("1. Agregar Barco");
         puts("2. Mostrar");
         puts("3. Buscar Barco");
+        puts("4. Batalla");
         puts("0. Salir");
         scanf("%i",&opc);
         while(getchar() != '\n');
@@ -52,6 +54,11 @@ void menu_puerto(Puerto *puerto){
                 continue;
             }
             menu_guerreros(barco->guerreros);
+            break;
+        case BATALLA:
+            if (puerto->cantidad != 0 || batalla->cantidad != 0){
+                menu_batalla(batalla, puerto);
+            }else puts("No hay barcos disponibles");
             break;
         case SALIR_PUERTO:
             puts("Saliendo...");

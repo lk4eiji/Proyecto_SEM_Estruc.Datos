@@ -29,9 +29,6 @@ void menu_batalla(Batalla *batalla, Puerto *puerto){
                     continue;
                 }
                 if(ColaBatalla_encolar(batalla,barco)){
-                    if (seleccion == 1){
-                        Puerto_eliminar_inicio(puerto);
-                    }else Puerto_eliminar_final(puerto);
                     puts("Se agregó barco a la Batalla");
                 }else{
                     puts("Error al agregar barco a la Batalla");

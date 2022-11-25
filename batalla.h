@@ -80,7 +80,7 @@ bool ColaInt_encolar(ColaInt *colaInt,Barco *dato)
     }
     if(ColaInt_vacia(colaInt)){
         puts("Modifica la velocidad del barco");
-        dato->combustible = leerFloat("Velocidad: ");
+        dato->velocidad = leerFloat("Velocidad: ");
         colaInt->inicio = nuevo;
         colaInt->final = nuevo;
         colaInt->cantidad++;
@@ -183,7 +183,8 @@ typedef ColaInt Batalla;
 
 Barco *ColaBatalla_lugar(Puerto *puerto){
     int seleccion;
-    if (puerto->cantidad == 0){
+    Nodo_Doble *temp = puerto->inicio;
+    if (temp->dato == 0){
         puts("No hay barcos por agregar");
         return NULL;
     }
@@ -192,10 +193,24 @@ Barco *ColaBatalla_lugar(Puerto *puerto){
     puts("2. Final");
     seleccion = leerInt("Lugar: ");
     if(seleccion == 1){
-        return puerto->inicio->dato;
-    }else{
-        return puerto->final->dato;
+        if (temp->dato->combustible == 0){
+            puts("Barco sin combustible");
+            Puerto_eliminar_inicio(puerto);
+            return NULL;
+        }
+        Puerto_eliminar_inicio(puerto);
+        return temp->dato;
+    }else if(seleccion == 2){
+        Nodo_Doble *temp = puerto->final;
+        if (temp->dato->combustible == 0){
+            Puerto_eliminar_final(puerto);
+            puts("Barco sin combustible");
+            return NULL;
+        }
+        Puerto_eliminar_final(puerto);
+        return temp->dato;
     }
+    return NULL;
 }
 
 Barco *ColaBatalla_regresar(ColaInt *colaInt){
@@ -208,10 +223,17 @@ Barco *ColaBatalla_regresar(ColaInt *colaInt){
         puts("ColaInt está vacia");
         return NULL;
     }
+    if (colaInt->inicio->dato->armadura == 0){
+        puts("El barco no tiene armadura suficiente, no puede regresar");
+        ColaBatalla_desencolar(colaInt);
+        return NULL;
+    }
+    
     puts("Modifica la armadura del barco");
     colaInt->inicio->dato->armadura = leerFloat("Armadura: ");
     if (colaInt->inicio->dato->armadura == 0){
         puts("El barco no tiene armadura suficiente, no puede regresar");
+        ColaBatalla_desencolar(colaInt);
         return NULL;
     }
     puts("Modifica el combustible del barco");

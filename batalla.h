@@ -157,17 +157,31 @@ ColaInt *ColaInt_free(ColaInt *colaInt)
     return colaInt;
 }
 
-Barco *ColaInt_tomar(ColaInt *colaInt)
-{
-    if(colaInt == NULL){
+Barco *ColaInt_tomar(ColaInt *colaInt){
+    if (colaInt == NULL){
         puts("Cola no tiene memoria");
         return NULL;
     }
     if(ColaInt_vacia(colaInt)){
-        puts("Cola está vacia");
+        puts("ColaInt está vacia");
+        return NULL;
+    }
+    if (colaInt->inicio->dato->armadura == 0){
+        puts("El barco no tiene armadura suficiente, no puede regresar");
+        ColaInt_desencolar(colaInt);
         return NULL;
     }
     
+    puts("Modifica la armadura del barco");
+    colaInt->inicio->dato->armadura = leerFloat("Armadura: ");
+    if (colaInt->inicio->dato->armadura == 0){
+        puts("El barco no tiene armadura suficiente, no puede regresar");
+        ColaInt_desencolar(colaInt);
+        return NULL;
+    }
+    puts("Modifica el combustible del barco");
+    colaInt->inicio->dato->combustible = leerFloat("Combustible: ");
+    colaInt->inicio->dato->velocidad = 0;
     return colaInt->inicio->dato;
 
 }
@@ -211,35 +225,6 @@ Barco *ColaBatalla_lugar(Puerto *puerto){
         return temp->dato;
     }
     return NULL;
-}
-
-Barco *ColaBatalla_regresar(ColaInt *colaInt){
-    //float armadura, combustible;
-    if (colaInt == NULL){
-        puts("Cola no tiene memoria");
-        return NULL;
-    }
-    if(ColaInt_vacia(colaInt)){
-        puts("ColaInt está vacia");
-        return NULL;
-    }
-    if (colaInt->inicio->dato->armadura == 0){
-        puts("El barco no tiene armadura suficiente, no puede regresar");
-        ColaBatalla_desencolar(colaInt);
-        return NULL;
-    }
-    
-    puts("Modifica la armadura del barco");
-    colaInt->inicio->dato->armadura = leerFloat("Armadura: ");
-    if (colaInt->inicio->dato->armadura == 0){
-        puts("El barco no tiene armadura suficiente, no puede regresar");
-        ColaBatalla_desencolar(colaInt);
-        return NULL;
-    }
-    puts("Modifica el combustible del barco");
-    colaInt->inicio->dato->combustible = leerFloat("Combustible: ");
-    colaInt->inicio->dato->velocidad = 0;
-    return colaInt->inicio->dato;
 }
 
 #endif

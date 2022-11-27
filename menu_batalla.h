@@ -1,7 +1,6 @@
 #ifndef MENU_BATALLA_H
 #define MENU_BATALLA_H
 #include "batalla.h"
-#include "utilidades.h"
 
 typedef enum{
     SALIR_BATALLA,
@@ -36,7 +35,7 @@ void menu_batalla(Batalla *batalla, Puerto *puerto){
                 }
                 break;
             case SACAR_BARCO_BATALLA:
-                barco = ColaBatalla_regresar(batalla);
+                barco = ColaBatalla_tomar(batalla);
                 if(barco == NULL){
                     puts("Error al sacar Barco");
                     continue;

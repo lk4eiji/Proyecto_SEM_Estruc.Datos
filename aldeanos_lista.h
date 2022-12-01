@@ -230,4 +230,46 @@ bool AldeanosLista_eliminar(AldeanosLista *aldeanosLista, size_t posicion){
     return NO_ERROR;
 }
 
+bool AldeanosLista_respaldar(AldeanosLista *aldeanosLista, char *nombre_archivo){
+    if (aldeanosLista == NULL){
+        puts("JugadoresLista no tiene memoria");
+        return false;
+    }
+    
+    FILE *archivo = fopen(nombre_archivo, "w");
+    if (archivo == NULL){
+        puts("Error al crear el Archivo");
+        return false;
+    }
+    
+    for (size_t i = 0; i < aldeanosLista->cantidad; i++){
+        Aldeano_respaldar(aldeanosLista->aldeanos[i],archivo);
+    }
+    fclose(archivo);
+    return true;
+
+}
+
+bool AldeanosLista_recuperar(AldeanosLista *aldeanosLista, char *nombre_archivo){
+    if (aldeanosLista == NULL){
+        puts("JugadoresLista no tiene memoria");
+        return false;
+    }
+    FILE *archivo = fopen(nombre_archivo, "r");
+    if (archivo == NULL){
+        puts("Error al abrir el Archivo");
+        return false;
+    }
+
+    while(true){
+        Aldeano *aldeano = Aldeano_recupear(archivo);
+        if (aldeano == NULL) break;
+        AldeanosLista_agregar_final(aldeanosLista,aldeano);
+        
+    }
+
+    fclose(archivo);
+    return true;
+}
+
 #endif

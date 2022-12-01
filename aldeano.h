@@ -68,4 +68,39 @@ Aldeano *Aldeano_capturar(){
     return aldeano;
 }
 
+bool Aldeano_respaldar(Aldeano *aldeano, FILE *archivo){
+    if (aldeano == NULL){
+        puts("Jugador no tiene memoria");
+        return false;
+    }
+    if (archivo == NULL){
+        puts("Archivo nulo");
+        return false;
+    }
+    
+    fprintf(archivo, "%s\n", aldeano->nombre);
+    fprintf(archivo, "%i\n",aldeano->edad);
+    fprintf(archivo, "%i\n",aldeano->salud);
+
+    return true;
+}
+
+Aldeano *Aldeano_recupear(FILE *archivo){
+    if (archivo == NULL){
+        puts("Archivo nulo");
+        return NULL;
+    }
+    char nombre[100];
+    int edad;
+    int salud;
+    
+    fscanf(archivo,"%s",nombre);
+    if (feof(archivo)) return NULL;
+    fscanf(archivo,"%i",&edad);
+    fscanf(archivo,"%i",&salud);
+
+    Aldeano *aldeano = Aldeano_init(nombre, edad, salud);
+    return aldeano;
+}
+
 #endif

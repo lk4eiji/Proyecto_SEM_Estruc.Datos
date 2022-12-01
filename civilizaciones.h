@@ -232,4 +232,51 @@ Civilizacion *Civilizaciones_buscar(Civilizaciones *civilizaciones,char *nombre)
 
 }
 
+bool Civilizaciones_respaldar(Civilizaciones *civilizaciones){
+    if (civilizaciones == NULL){
+        puts("Civilizaciones no tiene memoria");
+        return false;
+    }
+    if (civilizaciones->cantidad == 0){
+        puts("Civilizaciones esta vacia");
+        return false;
+    }
+
+    FILE *archivo = fopen("civilizaciones.txt", "w");
+    if(archivo == NULL){
+        puts("Error al crear el archivo Civilizaciones.txt");
+        return false;
+    }
+    
+    NodoDoble *temp = civilizaciones->inicio;
+    while (temp != NULL){
+        Civilizacion_respaldar(temp->dato,archivo);
+        temp = temp->siguiente;
+    }
+    
+    fclose(archivo);
+    return true; 
+}
+
+bool  Civilizaciones_recuperar(Civilizaciones *civilizaciones){
+    if (civilizaciones == NULL){
+        puts("Civilizaciones no tiene memoria");
+        return false;
+    }
+    FILE *archivo = fopen("civilizaciones.txt","r");
+    if (archivo == NULL){
+        puts("Error al abrir el archivo");
+        return false;
+    }
+
+    while (true){
+        Civilizacion *civilizacion = Civilizacion_recuperar(archivo);
+        if (civilizacion == NULL) break;
+        Civilizaciones_insertar_final(civilizaciones,civilizacion);
+    }
+    
+    fclose(archivo);
+    return true;
+}
+
 #endif

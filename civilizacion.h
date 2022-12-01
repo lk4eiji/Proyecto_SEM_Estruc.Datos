@@ -70,5 +70,41 @@ bool Civilizacion_mostrar(Civilizacion *civilizacion)
     return true;
 }
 
+bool Civilizacion_respaldar(Civilizacion *civilizacion, FILE *archivo){
+    if (civilizacion == NULL){
+        puts("Civilización no tiene memoria");
+        return false;
+    }
+    if (archivo == NULL){
+        puts("Archivo nulo");
+        return false;
+    }
+    
+    fprintf(archivo,"%s\n",civilizacion->nombre);
+    char nombre_archivo[100];
+    strcpy(nombre_archivo, civilizacion->nombre);
+    strcat(nombre_archivo, ".txt");
+    AldeanosLista_respaldar(civilizacion->aldeanosLista, nombre_archivo);
+    return true;
+}
+
+Civilizacion *Civilizacion_recuperar(FILE *archivo){
+    if (archivo == NULL){
+        puts("Archivo nulo");
+        return NULL;
+    }
+
+    char buffer[100];
+    fgets(buffer,100,archivo);
+    buffer[strlen(buffer)-1] = '\0';
+    if (feof(archivo)) return NULL;
+    
+    Civilizacion *civilizacion = Civilizacion_init(buffer);
+    char nombre_archivo[100];
+    strcpy(nombre_archivo, civilizacion->nombre);
+    strcat(nombre_archivo, ".txt");
+    AldeanosLista_recuperar(civilizacion->aldeanosLista,nombre_archivo);
+    return civilizacion;
+}
 
 #endif

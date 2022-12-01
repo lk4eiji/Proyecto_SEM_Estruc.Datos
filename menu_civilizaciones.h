@@ -13,7 +13,7 @@ void menu_civilizaciones(Civilizaciones *civilizaciones)
         INSERTAR_INICIO,INSERTAR_FINAL,
         MOSTRAR,
         ELIMINAR_INICIO,ELIMINAR_FINAL,
-        BUSCAR
+        BUSCAR, RESPALDAR, RECUPERAR
     }MENU_CIVILIZACIONES;
 
     int op;
@@ -27,6 +27,8 @@ void menu_civilizaciones(Civilizaciones *civilizaciones)
         puts("4. Eliminar inicio");
         puts("5. Eliminar final");
         puts("6. Buscar civilizacion");
+        puts("7. Respaldar");
+        puts("8. Recuperar");
         puts("0. Salir");
         scanf("%i",&op);
         while(getchar() != '\n');
@@ -80,6 +82,16 @@ void menu_civilizaciones(Civilizaciones *civilizaciones)
                 continue;
             }
             menu_aldeanos(civilizacion->aldeanosLista, civilizacion->puerto,civilizacion->batalla);
+            break;
+        case RESPALDAR:
+            if (Civilizaciones_respaldar(civilizaciones)){
+                puts("Respaldo de Civilizaciones Creado");
+            }else puts("Error al respaldar Civilizaciones");
+            break;
+        case RECUPERAR:
+            if (Civilizaciones_recuperar(civilizaciones)){
+                puts("Civilizaciones recuperado con exito");
+            }else puts("Error al recuperar Civilizaciones");
             break;
         default:
             break;
